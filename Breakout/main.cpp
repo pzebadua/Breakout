@@ -97,13 +97,7 @@ void checkCollisionUp(float x, float y)
     {
         if ((y-ball.getRadius()) <= list[i]->getSizeUp() && (y+ball.getRadius()) >= list[i]->getSizeDown() && x <= list[i]->getSizeRight() && x >= list[i]->getSizeLeft()){
             
-            std::cout<<"Ball: "<< ball.getX()<<std::endl;
-            std::cout<<"BRICK X: "<< list[i]->getX()<<" BRICK Y: "<< list[i]->getY()<<std::endl;
-            std::cout<<"RIGHT X: "<< list[i]->getSizeRight()<<std::endl;
-            std::cout<<"LEFT X: "<< list[i]->getSizeLeft()<<std::endl;
-            std::cout<<"UP Y: "<< list[i]->getSizeUp()<<std::endl;
-            std::cout<<"DOWN Y: "<< list[i]->getSizeDown()<<std::endl;
-
+            //if there is a collision with the brick delete the brick from the list
             deleteFromList(i);
             
             flag=0;
@@ -164,14 +158,13 @@ void checkCollisionDown(float x, float y)
     {
         
         gameManager.modifyLives(-1);
-        //gameManager.setLives(gameManager.getLives()-1);
-        std::cout<<"Lives: "<<gameManager.getLives()<<std::endl; //Later throw from gamemANAGER
-
+        //Reset Ball position
         ball.reset(0.0,0.0,0.05,0.05);
-
+        //Check if game is over
         if (gameManager.getLives() == 0){
             exit(0);
         }
+        //Maybe add a timer here for the ball to wait 
         
     }
 
