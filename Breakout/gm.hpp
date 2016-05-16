@@ -15,7 +15,7 @@
 #include <iostream>
 #include <string>
 #include "text3d.h"
-
+#include "Texture.h"
 
 #define LIVES 3
 #define POINTS 0
@@ -29,6 +29,9 @@ private:
     void drawLives();
     void drawELives();
     void drawPoints();
+    void createBorders();
+    void createBackground();
+    void drawBorders();
 
 
 public:
@@ -43,7 +46,7 @@ public:
     void modifyELives(int l);
     void modifyLives(int l);
     void modifyPoints(int p);
-
+    void createScene();
     void drawScoreboard();
     
 

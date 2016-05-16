@@ -12,8 +12,6 @@
 #include "gm.hpp"
 #include "text3d.h"
 
-#include "glm.h"
-#include "Texture.h"
 
 #define RIGHT 1
 #define LEFT -1
@@ -33,7 +31,7 @@ Ball ball(0.0,0.0,0.01,0.05);
 //paddle(speed,x,y);
 Paddle paddle(1.0,0.0,-5.0);
 //enemy(speed,x,y);
-Paddle enemy(0.02,0.0,25.0);
+Paddle enemy(0.08,0.0,25.0);
 
 GM gameManager;
 
@@ -289,61 +287,7 @@ void display(void)
     glPushMatrix();
     //Erase Later
     gluLookAt (camX, camY, camZ, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-    glPushMatrix();
-    glTranslatef(-7.0, 1.25, 0.0);
-    glScalef(.5, 18, 1);
-    glutSolidCube (1.0);
-    glPopMatrix();
-    glPushMatrix();
-    glTranslatef(7.0, 1.25, 0.0);
-    glScalef(.5, 18, 1);
-    glutSolidCube (1.0);
-    glPopMatrix();
-    glPushMatrix();
-    glTranslatef(0.0, 10.0, 0.0);
-    glScalef(14, .5, 1);
-    glutSolidCube (1.0);
-    glPopMatrix();
-    glPushMatrix();
-    glTranslatef(0.0, -7.5, 0.0);
-    glScalef(14, .5, 1);
-    glutSolidCube (1.0);
-    glPopMatrix();
-    //Fondo
-    glPushMatrix();
-    std::string nombreM = "Ball2.tga";
-    char *cstr = new char[nombreM.length() + 1];
-    strcpy(cstr, nombreM.c_str());
-    Texture ItemTexture;
-
-//Aqui
-    if(LoadTGA(&ItemTexture, cstr)){
-        glGenTextures(1, &ItemTexture.texID);
-        glBindTexture(GL_TEXTURE_2D, ItemTexture.texID);
-        glTexImage2D(GL_TEXTURE_2D, 0, ItemTexture.bpp / 8, ItemTexture.width, ItemTexture.height, 0, ItemTexture.type, GL_UNSIGNED_BYTE, ItemTexture.imageData);
-        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-        glEnable(GL_TEXTURE_2D);
-        
-        if (ItemTexture.imageData)
-            free(ItemTexture.imageData);
-        }
-    
-        delete cstr;
-    //glBindTexture(GL_TEXTURE_2D, ItemTexture.texID);
-
-    glTranslatef(0.0, 1.4, -15.0);
-    glBegin(GL_QUADS);                      // Draw A Quad
-        glVertex3f(-11.0f, 14.0f, 0.0f);              // Top Left
-        glVertex3f( 11.0f, 14.0f, 0.0f);              // Top Right
-        glVertex3f( 11.0f,-14.0f, 0.0f);              // Bottom Right
-        glVertex3f(-11.0f,-14.0f, 0.0f);              // Bottom Left
-    glEnd();
-    //glScalef(22, 28, 1);
-    //glutSolidCube (1.0);
-    glDisable(GL_TEXTURE_2D);
-    glPopMatrix();
-    
+    gameManager.createScene();
     glTranslatef(0.0, -1.5, 0.0);
     
     drawBricks(); //Put into bricks class later
