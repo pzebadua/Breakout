@@ -24,8 +24,10 @@ class GM
 {
 private:
     int lives;
+    int elives;
     int points;
     void drawLives();
+    void drawELives();
     void drawPoints();
 
 
@@ -34,8 +36,11 @@ public:
     GM();
     void setPoints(int x);
     int getPoints();
+    void setELives(int y);
+    int getELives();
     void setLives(int y);
     int getLives();
+    void modifyELives(int l);
     void modifyLives(int l);
     void modifyPoints(int p);
 

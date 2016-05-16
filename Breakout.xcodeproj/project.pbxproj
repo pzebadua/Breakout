@@ -11,6 +11,8 @@
 		BF6BFEFA1CCBE4C90062961D /* ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF6BFEF81CCBE4C90062961D /* ball.cpp */; };
 		BF6BFEFD1CCBE9430062961D /* paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF6BFEFB1CCBE9430062961D /* paddle.cpp */; };
 		BF6BFF001CCBFA860062961D /* gm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF6BFEFE1CCBFA860062961D /* gm.cpp */; };
+		BF720B821CE8A309003ED015 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF720B801CE8A309003ED015 /* Texture.cpp */; };
+		BF720B851CE8A33E003ED015 /* glm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF720B831CE8A33E003ED015 /* glm.cpp */; };
 		BFECCC021CCBB2D700889F11 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFECCC011CCBB2D700889F11 /* GLUT.framework */; };
 		BFECCC041CCBB2DE00889F11 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFECCC031CCBB2DE00889F11 /* OpenGL.framework */; };
 		BFECCC071CCBB35500889F11 /* brick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFECCC051CCBB35500889F11 /* brick.cpp */; };
@@ -38,6 +40,10 @@
 		BF6BFEFC1CCBE9430062961D /* paddle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = paddle.hpp; sourceTree = "<group>"; };
 		BF6BFEFE1CCBFA860062961D /* gm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gm.cpp; sourceTree = "<group>"; };
 		BF6BFEFF1CCBFA860062961D /* gm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gm.hpp; sourceTree = "<group>"; };
+		BF720B801CE8A309003ED015 /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		BF720B811CE8A309003ED015 /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		BF720B831CE8A33E003ED015 /* glm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glm.cpp; sourceTree = "<group>"; };
+		BF720B841CE8A33E003ED015 /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
 		BFECCBF71CCBB2BE00889F11 /* Breakout */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Breakout; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFECCC011CCBB2D700889F11 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		BFECCC031CCBB2DE00889F11 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -82,6 +88,10 @@
 		BFECCBF91CCBB2BE00889F11 /* Breakout */ = {
 			isa = PBXGroup;
 			children = (
+				BF720B831CE8A33E003ED015 /* glm.cpp */,
+				BF720B841CE8A33E003ED015 /* glm.h */,
+				BF720B801CE8A309003ED015 /* Texture.cpp */,
+				BF720B811CE8A309003ED015 /* Texture.h */,
 				BF270D891CCD43B300990B2D /* text3d.cpp */,
 				BF270D8A1CCD43B300990B2D /* text3d.h */,
 				BFECCC1E1CCBBA8700889F11 /* main.cpp */,
@@ -153,7 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF720B851CE8A33E003ED015 /* glm.cpp in Sources */,
 				BF6BFF001CCBFA860062961D /* gm.cpp in Sources */,
+				BF720B821CE8A309003ED015 /* Texture.cpp in Sources */,
 				BF270D8B1CCD43B300990B2D /* text3d.cpp in Sources */,
 				BFECCC071CCBB35500889F11 /* brick.cpp in Sources */,
 				BF6BFEFD1CCBE9430062961D /* paddle.cpp in Sources */,

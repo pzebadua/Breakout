@@ -96,7 +96,7 @@ void Ball::drawBall()
     
     glTranslatef(coordsX,coordsY,0.0);
     
-    glutWireSphere(radius,20,20);
+    glutWireSphere(radius,16,16);
     
     glPopMatrix();
 }

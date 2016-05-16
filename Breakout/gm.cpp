@@ -13,6 +13,7 @@ GM::GM()
 {
     points = POINTS;
     lives = LIVES;
+    elives = LIVES;
     
 }
 void GM::setPoints(int p)
@@ -23,7 +24,14 @@ int GM::getPoints()
 {
     return points;
 }
-
+void GM::setELives(int l)
+{
+    elives = l;
+}
+int GM::getELives()
+{
+    return elives;
+}
 void GM::setLives(int l)
 {
     lives = l;
@@ -44,6 +52,19 @@ void GM::drawLives()
     glPopMatrix();
     
 }
+void GM::drawELives()
+{
+    std::string hp = "Lives: " + std::to_string(elives);
+    
+    
+    glPushMatrix();
+    glColor3f (1.0, 0.0, 0.0);
+    glScalef(.3, .3, 1);
+    glTranslatef(6, 10, 0.0f);
+    t3dDraw3D(hp, 0, 0, 0.2f);
+    glPopMatrix();
+    
+}
 void GM::drawPoints()
 {
     std::string score = "Points: " + std::to_string(points);
@@ -56,6 +77,10 @@ void GM::drawPoints()
     glPopMatrix();
 
 
+}
+void GM::modifyELives(int l)
+{
+    elives += l;
 }
 void GM::modifyLives(int l)
 {
@@ -79,5 +104,7 @@ void GM::drawScoreboard()
     
     drawPoints();
     drawLives();
+    drawELives();
+
     
 }

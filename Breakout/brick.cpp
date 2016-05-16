@@ -70,6 +70,6 @@ void Brick::drawBrick()
     glTranslatef(coordsX, coordsY, 0);
     glScalef(1.0, 0.5, 1.0);
     glRotatef(90.0, 1.0, 0.0, 0.0);
-    glutWireCube (size*2);
+    glutSolidCube (size*2);
     glPopMatrix();
 }
