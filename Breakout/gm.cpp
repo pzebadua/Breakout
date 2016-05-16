@@ -163,7 +163,17 @@ void GM::createBackground()
 
     
 }
-
+float GM::updateCam()
+{
+    if (z<=-13)
+    {
+        z=-13;
+    }else
+    {
+        z--;
+    }
+    return z;
+}
 void GM::createScene()
 {
     createBorders();
@@ -173,7 +183,7 @@ void GM::createScene()
 
 void GM::drawBorders()
 {
-    glTranslatef(0.0, 1.4, -15.0);
+    glTranslatef(0.0, 1.4, -3.0);
     glBegin(GL_QUADS);                      // Draw A Quad
         glVertex3f(-11.0f, 14.0f, 0.0f);              // Top Left
         glVertex3f( 11.0f, 14.0f, 0.0f);              // Top Right
@@ -181,4 +191,9 @@ void GM::drawBorders()
         glVertex3f(-11.0f,-14.0f, 0.0f);              // Bottom Left
     glEnd();
 }
+void GM::drawPause()
+{
+
+}
+
 

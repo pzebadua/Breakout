@@ -30,8 +30,6 @@ void Ball::setX(double x)
         velocity_x = velocity_x * -1;
 
     }
-
-        //Is it positive or negative ?
     
 }
 double Ball::getX()

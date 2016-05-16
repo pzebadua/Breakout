@@ -19,19 +19,18 @@
 #define DOWN -1
 
 #define ROWS 3
-#define COLUMNS 6
-//std::cout<<value<<std::endl;
+#define COLUMNS 5
 
 static int flag=1;
 float camX=0.0, camY=0.0, camZ=24.0;
 int angles[2] = {45,-45};
-
+int pause = 1;
 //ball(speed,x,y,dx,dy);
 Ball ball(0.0,0.0,0.01,0.05);
 //paddle(speed,x,y);
 Paddle paddle(1.0,0.0,-5.0);
 //enemy(speed,x,y);
-Paddle enemy(0.08,0.0,25.0);
+Paddle enemy(0.06,0.0,25.0);
 
 GM gameManager;
 
@@ -74,7 +73,7 @@ void init(void)
     {
         for (int j =0; j < COLUMNS; j++)
         {
-            ptrBrick = new Brick (1 , j*2-5, i+3);
+            ptrBrick = new Brick (i+1 , j*2-4, i+3);
             list.push_back(ptrBrick);
         }
     }
@@ -84,10 +83,6 @@ void init(void)
 
 void deleteFromList(int i)
 {
-    
-    
-    //we add some points
-    gameManager.setPoints(gameManager.getPoints()+list[i]->getPoints());
 
     //We delete the bircks from the list (1 less brick to destroy)
     list.erase(list.begin()+i);
@@ -115,6 +110,8 @@ void checkCollisionUp(float x, float y)
     {
         if ((y-ball.getRadius()) <= list[i]->getSizeUp() && (y+ball.getRadius()) >= list[i]->getSizeDown() && x <= list[i]->getSizeRight() && x >= list[i]->getSizeLeft()){
             
+            //we add some points
+            gameManager.setPoints(gameManager.getPoints()+list[i]->getPoints());
             //if there is a collision with the brick delete the brick from the list
             deleteFromList(i);
             
@@ -270,8 +267,6 @@ void update()
         ball.setX(DOWN);
         checkCollisionDown(ball.getX(),ball.getY());
     }
-    //std::cout<<"VX: "<< ball.getVelocityX() <<std::endl;
-    //std::cout<<"VY: "<< ball.getVelocityY() <<std::endl;
 
 }
 
@@ -288,8 +283,11 @@ void display(void)
     //Erase Later
     gluLookAt (camX, camY, camZ, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
     gameManager.createScene();
+    if (list.empty())
+    {
+       camY = gameManager.updateCam();
+    }
     glTranslatef(0.0, -1.5, 0.0);
-    
     drawBricks(); //Put into bricks class later
     glColor3f (1.0, 0.0, 0.0);
     enemy.drawPaddle();
@@ -299,6 +297,7 @@ void display(void)
     glPopMatrix();
     //we set this outside of the pop so we can keep it next to the camara
     gameManager.drawScoreboard();
+
     
     glutSwapBuffers ();
 }
@@ -315,8 +314,38 @@ void reshape (int w, int h)
 }
 void simulate()
 {
-    update();
-    glutPostRedisplay();
+    if(pause != -1){
+        update();
+        glutPostRedisplay();
+    }else
+    {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glMatrixMode(GL_MODELVIEW);
+        glPushMatrix();
+
+        glColor3f (1.0, 1.0, 1.0);
+        glTranslatef(6.0f, 0.0f, -3.0f);
+        
+        GLfloat ambientColor[] = {0.4f, 0.4f, 0.4f, 1.0f};
+        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor);
+        
+        GLfloat lightColor0[] = {0.6f, 0.6f, 0.6f, 1.0f};
+        GLfloat lightPos0[] = {-0.5f, 0.5f, 1.0f, 0.0f};
+        glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
+        glLightfv(GL_LIGHT0, GL_POSITION, lightPos0);
+        std::string p = "Pause";
+        
+        
+        glPushMatrix();
+        glTranslatef(-6, 0.0, 0.0f);
+        glScalef(1, 1, 1);
+        t3dDraw3D(p, 0, 0, 0.2f);
+        glPopMatrix();
+        glPopMatrix();
+
+        glutSwapBuffers ();
+
+    }
 }
 
 void keyboard(unsigned char key, int x, int y)
@@ -351,13 +380,17 @@ void keyboard(unsigned char key, int x, int y)
             break;
         case 'd':
         case 'D':
-            paddle.setX(RIGHT);
+            paddle.setX(RIGHT*.5);
             glutPostRedisplay();
             break;
         case 'a':
         case 'A':
-            paddle.setX(LEFT);
+            paddle.setX(LEFT*.5);
             glutPostRedisplay();
+            break;
+        case 'p':
+        case 'P':
+            pause = -pause;
             break;
     }
 }

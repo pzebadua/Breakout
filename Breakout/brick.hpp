@@ -13,6 +13,8 @@
 #include <GLUT/GLUT.h>
 #include <stdlib.h>
 #include <cmath>
+#include <string>
+#include <iostream>
 
 class Brick
 {
@@ -20,6 +22,7 @@ class Brick
 private:
     int visible;
     int points;
+    float R = 0.0,G = 0.0,B =0.0;
     double coordsX;
     double coordsY;
     float size = 1;
@@ -40,6 +43,7 @@ public:
     float getSizeLeft();
     float getSizeUp();
     float getSizeDown();
+    void setColor(int);
 
     
 };

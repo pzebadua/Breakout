@@ -1,18 +1,9 @@
-//#ifndef __TGA_HEADER__
-//#define __TGA_HEADER__
 
-//#include "MainHeader.h"
-//#include "TextureHeader.h"
-
-//#include <windows.h>
-//#include <windowsx.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-//#include <GL/glew.h>
 
 #include <GLUT/GLUT.h>
-//#include "gl.h"
 
 #include <math.h>
 

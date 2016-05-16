@@ -32,6 +32,7 @@ private:
     void createBorders();
     void createBackground();
     void drawBorders();
+    int z = 0.0;
 
 
 public:
@@ -48,7 +49,8 @@ public:
     void modifyPoints(int p);
     void createScene();
     void drawScoreboard();
-    
+    float updateCam();
+    void drawPause();
 
 
     

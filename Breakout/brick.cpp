@@ -12,6 +12,9 @@ Brick::Brick(int p , double x, double y)
 {
     visible = 1;
     points = p;
+    
+    setColor(p);
+
     coordsX = x;
     coordsY = y;
 }
@@ -70,6 +73,30 @@ void Brick::drawBrick()
     glTranslatef(coordsX, coordsY, 0);
     glScalef(1.0, 0.5, 1.0);
     glRotatef(90.0, 1.0, 0.0, 0.0);
+    glColor3f (R, G, B);
     glutSolidCube (size*2);
     glPopMatrix();
+}
+
+void Brick::setColor(int i)
+{
+    
+    switch (i) {
+        case 1:
+            R=1.0;
+            G=1.0;
+            B=0.6;
+            break;
+        case 2:
+            R=0.627;
+            G=0.125;
+            B=0.94;
+            break;
+        case 3:
+            R=0.67;
+            G=1.0;
+            B=0.18;
+            break;
+
+    }
 }
